@@ -1,0 +1,16 @@
+module List
+
+imports
+  Expression
+
+context-free syntax
+
+  Exp.EmptyList = "(" ")"
+  Exp.SpaceSeparatedList = Exp Exp+ {avoid} // Avoiding for ambiguity
+  Exp.CommaSeparatedList = Exp "," {Exp ","}*
+  Exp.CommaSeparatedList = Exp "," {Exp ","}+ ","
+  
+context-free priorities
+  Exp.EmptyList 
+  > Exp.CommaSeparatedList 
+  > Exp.SpaceSeparatedList

@@ -1,0 +1,23 @@
+module desugar/list
+
+imports 
+  src-gen/signatures/Expression-sig
+  src-gen/signatures/List-sig
+  desugar/common
+
+signature
+  
+  constructors
+    Comma : ListSeparator
+    Space : ListSeparator
+    
+    List : list * ListSeparator -> Exp
+    
+rules
+  /*
+   * Literals
+   */
+  desugar-e: EmptyList()              -> List([], None())
+  desugar-e: CommaSeparatedList(h, t) -> List([h | t], Comma())
+  desugar-e: SpaceSeparatedList(h, t) -> List([h | t], Space())
+ 

@@ -23,6 +23,7 @@ context-free syntax
   
   Declaration = BlockDeclaration
   Declaration = VariableDeclaration
+
   /* 
    * TODO: Property declarations need not be followed by a ; per se, 
    * however this is not true when there are multiple consecutive

@@ -3,6 +3,7 @@ module Expression
 imports
   Common
   Colour
+  List
 
 context-free start-symbols
   Exp
@@ -87,6 +88,10 @@ context-free priorities
   {non-assoc: 
       Exp.Eq
       Exp.InEq
+  } > {right:
+    Exp.CommaSeparatedList
+  } > {right:
+    Exp.SpaceSeparatedList
   }
 
 

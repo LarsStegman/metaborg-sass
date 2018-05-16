@@ -1,0 +1,21 @@
+module desugar-list-test
+
+language sass
+
+fixture [[
+.x {
+  y: [[...]];
+}
+]]
+
+test comma list [[
+4, 5
+]] run desugar-exp to List([Number("4", Int()), Number("5", Int())], Comma())
+
+test trailing comma list [[
+4, 5,
+]] run desugar-exp to List([Number("4", Int()), Number("5", Int())], Comma())
+
+test space list [[
+4 5
+]] run desugar-exp to List([Number("4", Int()), Number("5", Int())], Space())

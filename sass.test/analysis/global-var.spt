@@ -88,3 +88,16 @@ test local does not shadow global in nested [[
   width: [[$w]];
 }
 ]] resolve #2 to #1
+
+
+test multiple global declarations [[
+.main {
+  $w: yellow;
+  .li {
+    [[$w]]: green !global;
+    $v: 560px !global;
+    $x: 50pt !global;
+  }
+  background: [[$w]];
+} 
+]] resolve #2 to #1

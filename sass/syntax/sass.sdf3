@@ -1,11 +1,13 @@
 module sass
 
 imports
-  
-  Script
   Common
-  Selector
+  Colour
   Declaration
+  Expression
+  List
+  Script
+  Selector
 
 context-free start-symbols
   
