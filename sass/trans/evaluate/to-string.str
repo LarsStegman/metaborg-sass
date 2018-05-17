@@ -1,0 +1,16 @@
+module evaluate/to-string
+
+imports
+  src-gen/signatures/Expression-sig
+  desugar/-
+  evaluate/number
+
+strategies
+  to-string = to-s
+
+rules
+  to-s: String(str, _) -> str
+  to-s: Number(n, Float())  -> <trimmed-num> n
+  to-s: Number(n, Int())    -> <int-component> n
+  to-s: True()              -> "true"
+  to-s: False()             -> "false"

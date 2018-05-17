@@ -1,5 +1,22 @@
 module Colour
 
+imports
+  String
+
+context-free start-symbols
+  Colour
+
+context-free syntax
+  Colour.HexShort = <#<HEXShorthand>>
+  Colour.Hex      = <#<HEX>>
+  Colour.ColourLabel = COLOUR-LITERAL
+
+context-free restrictions
+  Colour -/- [a-zA-Z0-9]
+  
+context-free priorities
+  Colour.ColourLabel > String.Unquoted
+
 lexical syntax
 
   HEXShorthand   = [0-9a-fA-F][0-9a-fA-F][0-9a-fA-F]

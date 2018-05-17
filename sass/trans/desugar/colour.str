@@ -1,0 +1,10 @@
+module desugar/colour
+
+imports
+  src-gen/signatures/Colour-sig
+  desugar/common
+
+rules
+  desugar-e: HexShort(hex) -> Hex(<explode-string; 
+                                 mapconcat(\c -> [c, c]\); 
+                                 implode-string> hex)

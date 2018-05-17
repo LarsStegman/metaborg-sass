@@ -1,0 +1,13 @@
+module test-interpolation-desugar
+
+language sass
+
+fixture [[
+.main {
+  x: [[...]];
+}
+]]
+
+test expressions inside interpolations are desugared [[
+#{3+4}
+]] run desugar-all to Interpolate(BinExp(Add(), Number("3", Int()), Number("4", Int())))

@@ -3,59 +3,69 @@ module Expression
 imports
   Common
   Colour
+  String
+  Interpolate
 
 context-free start-symbols
   Exp
-  Colour
-  
-context-free syntax
 
-  // Literals
-  Exp           = Number
-  Exp.String    = String
-  Exp           = Colour {prefer}
+/**
+ * Imports
+ */
+context-free syntax
+  Exp = Number
+  Exp = Colour
+  Exp = Interpolate
+  Exp = String {avoid}
+
+/**
+ * Sorts
+ */
+context-free syntax
   Exp.Length    = <<Exp> <LengthUnit>> {prefer}
   Exp.True      = <true>
   Exp.False     = <false>
   Exp.Null      = <null>
   
-  
   Exp.VarRef    = <<VAR>>
 
   Exp = <(<Exp>)> {bracket}
 
-  // Arithmetic Operators
+/**
+ * Arithmetic Operators
+ */
+context-free syntax  
   Exp.Add   = <<Exp> + <Exp>> {left}
   Exp.Sub   = <<Exp> - <Exp>> {left}
   Exp.Mult  = <<Exp> * <Exp>> {left}
   Exp.Div   = <<Exp> / <Exp>> {left}
   Exp.Mod   = <<Exp> % <Exp>> {left}
-  
-  // Logical Operators
+
+/**
+ * Logical Operators
+ */  
+context-free syntax
   Exp.And = <<Exp> and <Exp>> {left}
   Exp.Or  = <<Exp> or <Exp>> {left}
   Exp.Not = <not <Exp>> {right}
   
-  // Comparison
+/**
+ * Comparison Operators
+ */
+context-free syntax
   Exp.Eq    = <<Exp> == <Exp>> {non-assoc}
   Exp.InEq  = <<Exp> != <Exp>> {non-assoc}
   Exp.Gt    = [[Exp] > [Exp]]  {non-assoc}
   Exp.Gte   = [[Exp] >= [Exp]] {non-assoc}
   Exp.Lt    = [[Exp] < [Exp]]  {non-assoc}
   Exp.Lte   = [[Exp] <= [Exp]] {non-assoc}
-  
-  // String
-  String.Quoted = STRING
-  
-  Number.Int    = INT
-  Number.Float  = FLOAT
-  
-  Colour.HexShort = <#<HEXShorthand>>
-  Colour.Hex      = <#<HEX>>
-  Colour.ColourLabel = COLOUR-LITERAL
 
-context-free restrictions
-  Colour -/- [a-zA-Z0-9]
+/**
+ * Numbers
+ */
+context-free syntax  
+  Number.Int    = INT
+  Number.Float  = FLOAT 
 
 context-free priorities
   {non-assoc:

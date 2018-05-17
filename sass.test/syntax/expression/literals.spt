@@ -63,3 +63,15 @@ null
 test parse var [[
 $hello
 ]] parse to VarRef("$hello")
+
+test parse unquoted string [[
+hello
+]] parse to Unquoted("hello")
+
+test parse single quoted string [[
+'hello world'
+]] parse to SingleQuoted("'hello world'")
+
+test parse double quoted string [[
+"hello world"
+]] parse to DoubleQuoted("\"hello world\"")

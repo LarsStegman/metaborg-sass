@@ -23,7 +23,6 @@ signature
 
     Not   : UnOp
     
-    
     Int   : NumberType
     Float : NumberType
     
@@ -41,9 +40,6 @@ rules
    */
   desugar-e: Int(i)   -> Number(i, Int())
   desugar-e: Float(f) -> Number(f, Float())
-  desugar-e: HexShort(hex) -> Hex(<explode-string; 
-                                 mapconcat(\c -> [c, c]\); 
-                                 implode-string> hex)
   desugar-e: Length(l, u) -> Length(l, Unit(u, 1))
   desugar-e: VarRef(name) -> VarRef(<dehyphenize> name)
 

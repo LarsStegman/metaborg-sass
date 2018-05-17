@@ -3,6 +3,7 @@ module evaluate/expression
 imports
   evaluate/evaluate
   evaluate/number
+  evaluate/to-string
   src-gen/signatures/Expression-sig
   desugar/-
 
@@ -22,6 +23,9 @@ strategies
 
 rules
 
+  evaluate-e: VarRef(var) -> Null()
+  evaluate-e: Interpolate(e) -> <to-string; try(un-double-quote); try(un-single-quote)> e
+  
   // Compound expressions
   
   // Math

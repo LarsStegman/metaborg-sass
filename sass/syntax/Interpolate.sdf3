@@ -1,0 +1,11 @@
+module Interpolate
+
+imports
+  Expression
+
+context-free start-symbols
+  Interpolate
+
+context-free syntax
+  Interpolate.Interpolate = <#{<Exp>}>
+  

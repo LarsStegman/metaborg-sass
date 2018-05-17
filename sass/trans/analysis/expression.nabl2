@@ -9,7 +9,9 @@ rules
   /*
    * Literals
    */
-  [[ String(_) ^ (_) : StringT() ]].
+  [[ String(_, _) ^ (_) : StringT() ]].
+  [[ Interpolate(e) ^ (avS) : StringT() ]] :=
+    [[ e ^ (avS) : _]].
   [[ Number(_, _) ^ (_) : NumberT() ]].
   [[ Hex(_) ^ (_) : ColourT() ]].
   [[ ColourLabel(_) ^ (s) : ColourT() ]].

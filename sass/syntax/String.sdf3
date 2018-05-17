@@ -1,0 +1,33 @@
+module String
+
+imports
+  Common
+
+lexical syntax
+  DOUBLE-QUOTED  = "\"" StringChar* "\""
+  StringChar     = ~[\"\n] 
+  StringChar     = "\\\"" 
+  StringChar     = BackSlashChar 
+  BackSlashChar  = "\\" 
+  
+  SINGLE-QUOTED  = "'" SQStringChar* "'"
+  SQStringChar   = ~[\'\n]
+  SQStringChar   = "\\'"
+  SQStringChar   = BackSlashChar
+  
+  UNQUOTED       = [a-zA-Z][a-zA-Z0-9]*
+
+lexical restrictions
+  UNQUOTED -/- [a-zA-Z0-9]
+  
+  // Backslash chars in strings may not be followed by " 
+  
+  BackSlashChar -/- [\"]
+  
+context-free start-symbols
+  String
+
+context-free syntax
+  String.Unquoted     = UNQUOTED
+  String.SingleQuoted = SINGLE-QUOTED
+  String.DoubleQuoted = DOUBLE-QUOTED

@@ -1,0 +1,17 @@
+module test-interpolation-syntax
+
+language sass
+
+fixture [[
+.main {
+  x: [[...]];
+}
+]]
+
+test interpolation in expression [[
+#{1 + 2}
+]] parse to Interpolate(Add(Int("1"), Int("2")))
+
+test interpolation with varref [[
+#{$x}
+]] parse to Interpolate(VarRef("$x"))
