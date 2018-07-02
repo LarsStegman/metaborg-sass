@@ -14,7 +14,6 @@ test simple block declaration [[
     , BlockDeclaration(AllIn(Class("main"), Id("hello")), [PropertyDeclaration("color", ColourLabel("white"))])
   ])
 
-
 test global var inside nested block [[
 .m {
   .n {

@@ -6,5 +6,5 @@ test mixin with no arguments [[
 @mixin hello {
 
 }
-]] run desugar-all-test to Script([MixinDeclaration("hello", [], [], [])])
+]] run desugar-all-test to Script([], [MixinDeclaration("hello", [], [], [])])
 // Actual: MixinDeclaration("hello", [], [], [])

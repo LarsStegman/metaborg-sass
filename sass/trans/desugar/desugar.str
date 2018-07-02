@@ -10,8 +10,6 @@ imports
 strategies
 
   desugar-all = debug(newname)
-                  ; debug(!"Desugaring script: ")
-//                  ; desugar-script
                   ; debug(!"Desugaring control")
                   ; desugar-control
                   ; debug(!"Desugaring selectors")
@@ -22,6 +20,8 @@ strategies
                   ; desugar-declarations
                   ; debug(!"Desugaring calls")
                   ; desugar-calls
+                  ; debug(!"Desugaring script: ")
+                  ; desugar-script
                   ; debug(!"")
 
   desugar-all-test = desugar-all; strip-annos
