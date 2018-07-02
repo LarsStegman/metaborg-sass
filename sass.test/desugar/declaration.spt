@@ -36,7 +36,7 @@ test namespace property declaration with exp [[
     color: green;
   }
 }
-]] run desugar-all-test to Script([], [
+]] run desugar-all-test to Script([
     BlockDeclaration(Class("m"), [
       PropertyDeclaration("font", Length(Int("24"), "px")),
       PropertyDeclaration("font-color", ColourLabel("green"))

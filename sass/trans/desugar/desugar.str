@@ -11,7 +11,7 @@ strategies
 
   desugar-all = debug(newname)
                   ; debug(!"Desugaring script: ")
-                  ; desugar-script
+//                  ; desugar-script
                   ; debug(!"Desugaring control")
                   ; desugar-control
                   ; debug(!"Desugaring selectors")

@@ -30,7 +30,7 @@ test falsy if with else [[
     h: 2;
   }
 }
-]] run codegen-test to Script([], [
+]] run codegen-test to Script([
     BlockDeclaration(Class("m"), [
       PropertyDeclaration("h", Int("2")) 
     ])

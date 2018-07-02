@@ -38,7 +38,8 @@ rules
  * Namespace properties
  */
 rules
-  flatten-namespace-prop: BlockDeclaration(s, decls) -> BlockDeclaration(s, <flatten-list> decls)
+  flatten-namespace-prop: BlockDeclaration(s, decls)
+    -> BlockDeclaration(s, <flatten-list> decls)
   desugar-namespace-prop: NamespacePropertyDeclaration(prop, decs) -> 
     <cart(id); map(merge-namespace-prop); flatten-list> ([prop], decs) 
   desugar-namespace-prop: NamespacePropertyDeclarationExp(prop, e, decs) ->

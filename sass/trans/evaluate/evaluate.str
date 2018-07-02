@@ -12,3 +12,4 @@ imports
 strategies
   format = try(alltd(format-num))
   evaluate = bottomup(evaluate-exp); format
+  evaluate-all-test = interpret-script; format; strip-annos

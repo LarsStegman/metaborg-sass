@@ -4,7 +4,7 @@ language sass
 
 test simple if [[
 @if true {}
-]] run desugar-all-test to Script([], [
+]] run desugar-all-test to Script([
     IfElse([IfItem(True(), [])])
   ])
 
@@ -14,7 +14,7 @@ test if else [[
 } @else {
 
 }
-]] run desugar-all-test to Script([], [
+]] run desugar-all-test to Script([
     IfElse(
     [ IfItem(False(), [])
     , IfItem(True(), [])
@@ -29,7 +29,7 @@ test if else if else [[
 } @else {
 
 }
-]] run desugar-all-test to Script([], [
+]] run desugar-all-test to Script([
     IfElse(
     [ IfItem(BinExp(Eq(), Int("5"), Int("5")), [])
     , IfItem(False(), [])
@@ -41,7 +41,7 @@ test if else if else if [[
 @if 5 == 5 {}
 @else if false {}
 @else if 4 == 5 {}
-]] run desugar-all-test to Script([], [
+]] run desugar-all-test to Script([
     IfElse(
     [ IfItem(BinExp(Eq(), Int("5"), Int("5")), [])
     , IfItem(False(), [])

@@ -219,8 +219,8 @@ rules
     StringT() <coerce! BoolT(),
     BoolT()   <coerce! VarT().
   
-  [[ Script(refs, items) ^ (s) ]] :=
-    Map1(CreateEmptyDecl)[[ refs ^ (s) ]],
+  [[ Script(items) ^ (s) ]] :=
+//    Map1(CreateEmptyDecl)[[ refs ^ (s) ]],
     RootScopeIterative[[ items ^ (s) ]].
   
   CreateEmptyDecl[[ VarRef(r) ^ (s) ]] :=
