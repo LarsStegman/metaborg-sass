@@ -1,0 +1,9 @@
+module desugar-declaration-test
+
+language sass
+
+test mixin with no arguments [[
+@mixin hello {
+
+}
+]] run desugar-all-test to Script([], [MixinDeclaration("hello", [], [], [])])

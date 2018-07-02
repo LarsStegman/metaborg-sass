@@ -23,3 +23,10 @@ rules // Debugging
     where
       filename := <guarantee-extension(|"desugared.aterm")> path ;
       text     := <desugar-all> selected
+  
+  editor-desugar-test:
+    (selected, position, ast, path, project-path) -> (filename, text)
+    where
+      filename := <guarantee-extension(|"desugared.aterm")> path ;
+      text     := <desugar-all-test> selected
+    

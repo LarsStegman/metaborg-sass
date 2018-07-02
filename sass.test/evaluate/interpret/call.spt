@@ -92,7 +92,7 @@ test inclusion at root with default argument [[
 }
 
 @include hello;
-]] run codegen-test to Script([
+]] run transpile-sass to Script([
     BlockDeclaration(Class("m"), [
       PropertyDeclaration("width", Int("15"))
     ])

@@ -138,7 +138,7 @@ test modulo an int and float [[
 
 test mult length div [[
 40px * 6pt / 3pt 
-]] run evaluate-test to Length(Float("80"), "px")
+]] run evaluate to Length(Float("80"), "px")
 
 test mult length [[
 25px * 2.5pt

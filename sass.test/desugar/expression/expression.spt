@@ -10,7 +10,7 @@ fixture [[
 
 test desugar addition [[
 1 + 3
-]] run desugar-all to BinExp(Add(), Int("1"), Int("3"))
+]] run desugar-exp to BinExp(Add(), Int("1"), Int("3"))
 
 test desugar subtraction [[
 1 - 3
@@ -77,4 +77,4 @@ not true
 
 test length [[
 5px
-]] run desugar-all to Length(Int("5"), "px")
+]] run desugar-exp to Length(Int("5"), "px")

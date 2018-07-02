@@ -9,12 +9,21 @@ imports
  */
 strategies
 
-  desugar-all = desugar-control
+  desugar-all = debug(newname)
+                  ; debug(!"Desugaring script: ")
+                  ; desugar-script
+                  ; debug(!"Desugaring control")
+                  ; desugar-control
+                  ; debug(!"Desugaring selectors")
                   ; desugar-selectors
+                  ; debug(!"Desugaring expressions")
                   ; desugar-expressions
+                  ; debug(!"Desugaring declarations")
                   ; desugar-declarations
+                  ; debug(!"Desugaring calls")
                   ; desugar-calls
-                  ; topdown(try(flatten-list))
+                  ; debug(!"")
+
   desugar-all-test = desugar-all; strip-annos
 
 /**
@@ -23,4 +32,3 @@ strategies
 strategies
   resugar-all = resugar-selectors
                   ; resugar-expressions
-  

@@ -3,9 +3,13 @@ module codegen/codegen
 imports
   codegen/-
   evaluate/-
+  desugar/desugar
 
 strategies
   codegen = filter-nodes; flatten-declarations; filter-nodes; resugar-all
-  codegen-test = interpret-script; codegen; strip-annos
+  codegen-test = transpile-sass
 
-  transpile-sass = interpret-script; codegen; strip-annos
+  transpile-sass = resugar-script
+                    ; interpret-script
+                    ; codegen
+                    ; strip-annos

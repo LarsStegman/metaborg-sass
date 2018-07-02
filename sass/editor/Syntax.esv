@@ -21,7 +21,7 @@ menus
     action: "Format"          = editor-format (source)
     action: "Show parsed AST" = debug-show-aterm (source)
     action: "Show Desugared AST" = editor-desugar (source)
-
+    action: "Show Desugared AST (test)" = editor-desugar-test (source)
 views
   
   outline view: editor-outline (source)

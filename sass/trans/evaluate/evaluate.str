@@ -11,9 +11,4 @@ imports
   
 strategies
   format = try(alltd(format-num))
-  evaluate-all = interpret-script
-                  ; format 
-  
   evaluate = bottomup(evaluate-exp); format
-  evaluate-test = evaluate; strip-annos
-  evaluate-all-test = evaluate-all; strip-annos

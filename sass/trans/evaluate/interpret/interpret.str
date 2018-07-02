@@ -2,6 +2,7 @@ module interpret/interpret
 
 imports
   src-gen/signatures/Script-sig
+  src-gen/signatures/Expression-sig
 
 imports
   evaluate/expression  

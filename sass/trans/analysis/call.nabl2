@@ -7,7 +7,7 @@ imports
 rules
   RootScopeIterative[[ [IncludeMixin(l, args, content) | succ] ^ (avS) ]] :=
     Mixin{l} -> avS
-    , Mixin{l} |-> d
+    , Mixin{l} |-> d | error $[Undefined mixin [l]]
     , d ?=A=> fArgS
     , CheckAArgGroup[[ args ^ (avS, fArgS) ]]
     
@@ -16,7 +16,7 @@ rules
     , d ?=G=> finalMixinGS
     , nextS -G-> finalMixinGS 
     , d <rootable? RootAble() | error $[Mixin content cannot be included at the root of the document] @l
-     
+    
     , RootScopeIterative[[ succ ^ (nextS) ]]
     .
   ScopeIterative[[ [IncludeMixin(l, args, content) | succ] ^ (avS, gS, finalGS, rootA) ]] :=

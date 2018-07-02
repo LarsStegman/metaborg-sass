@@ -6,12 +6,12 @@ test mixin with no arguments [[
 @mixin hello {
 
 }
-]] run desugar-all-test to Script([MixinDeclaration("hello", [], [], [])])
+]] run desugar-all-test to Script([], [MixinDeclaration("hello", [], [], [])])
 
 test mixin with one argument [[
 @mixin hello($width) {
 }
-]] run desugar-all-test to Script([
+]] run desugar-all-test to Script([], [
     MixinDeclaration("hello", [
       FArg(1, FArg("$width"))],
       [],
@@ -20,7 +20,7 @@ test mixin with one argument [[
 
 test mixin with two arguments [[
 @mixin hello($width, $height){}
-]] run desugar-all-test to Script([
+]] run desugar-all-test to Script([], [
     MixinDeclaration("hello", [
       FArg(1, FArg("$width")), 
       FArg(2, FArg("$height"))], 
@@ -30,7 +30,7 @@ test mixin with two arguments [[
 
 test mixin with one normal argument, one default [[
 @mixin hello($width, $height: 150px){}
-]] run desugar-all-test to Script([
+]] run desugar-all-test to Script([], [
     MixinDeclaration("hello", 
       [
       FArg(1, FArg("$width"))], [
@@ -40,7 +40,7 @@ test mixin with one normal argument, one default [[
 
 test mixin names are dehypenized [[
 @mixin hello-world($how-are, $you-doin: 1) {}
-]] run desugar-all-test to Script([
+]] run desugar-all-test to Script([], [
     MixinDeclaration("hello_world", [
       FArg(1, FArg("$how_are"))], [
       FArg(2, FArgDefault("$you_doin", Int("1")))
@@ -49,13 +49,13 @@ test mixin names are dehypenized [[
 
 test mixin inclusion [[
 @include hello;
-]] run desugar-all-test to Script([
+]] run desugar-all-test to Script([], [
     IncludeMixin("hello", AArgGroup([]), None())
   ])
 
 test mixin inclusion with arguments [[
 @include hello(10, 25);
-]] run desugar-all-test to Script([
+]] run desugar-all-test to Script([], [
     IncludeMixin("hello", AArgGroup([
       AArg(1, AArg(Int("10"))), 
       AArg(2, AArg(Int("25")))]), 
@@ -75,7 +75,7 @@ test mixin inclusion with content block [[
 @include hello {
   colour: 0;
 }
-]] run desugar-all-test to Script([
+]] run desugar-all-test to Script([], [
     IncludeMixin("hello", AArgGroup([]), [
       PropertyDeclaration("colour", Int("0")) 
     ])
@@ -85,7 +85,7 @@ test variable declarations inside mixins are desugared [[
 @mixin hello {
   $v: 1;
 }
-]] run desugar-all-test to Script([
+]] run desugar-all-test to Script([], [
     MixinDeclaration("hello", [], [], [
       VarDeclaration("$v", Int("1"))
     ])
@@ -95,7 +95,7 @@ test include mixin with arguments and content block [[
 @include hello($width: 10, $height: 25) {
   colour: white;
 }
-]] run desugar-all-test to Script([
+]] run desugar-all-test to Script([], [
     IncludeMixin("hello", KeywordAArgGroup([
       KeywordAArg("$width", Int("10")), 
       KeywordAArg("$height", Int("25"))]), 

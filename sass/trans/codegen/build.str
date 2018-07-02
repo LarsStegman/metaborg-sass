@@ -24,7 +24,7 @@ rules
     (selected, _, ast, path, project-path) -> (filename, result)
     with
       filename := <guarantee-extension(|$[css.aterm])> path
-    ; result   := <interpret-script; codegen; strip-annos> ast
+    ; result   := <transpile-sass> ast
 
   /**
    * Transpiles a Sass file to a CSS file.

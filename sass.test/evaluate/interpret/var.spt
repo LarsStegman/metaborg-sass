@@ -7,7 +7,7 @@ $v: 15px;
 .m {
   width: $v;
 }
-]] run evaluate-all-test to Script([
+]] run codegen-test to Script([
     VarDeclaration("$v", Length(Int("15"), "px")),
     BlockDeclaration(Class("m"), [
       PropertyDeclaration("width", Length(Int("15"), "px"))
@@ -19,7 +19,7 @@ $v: true;
 .m {
   width: $v and false;
 }
-]] run evaluate-all-test to Script([
+]] run codegen-test to Script([
     VarDeclaration("$v", True()),
     BlockDeclaration(Class("m"), [
       PropertyDeclaration("width", False())
@@ -34,7 +34,7 @@ test global var outside block [[
 .n {
   width: $v;
 }
-]] run evaluate-all-test to Script([
+]] run codegen-test to Script([
     BlockDeclaration(Class("m"), [
       GlobalVarDeclaration("$v", Length(Int("10"), "px"))
     ]),
@@ -50,7 +50,7 @@ test global var inside nested block [[
   }
   count: $t;
 }
-]] run evaluate-all-test to Script([
+]] run codegen-test to Script([
     BlockDeclaration(Class("m"), [
       BlockDeclaration(Class("n"), [
         GlobalVarDeclaration("$t", Int("1"))

@@ -8,8 +8,15 @@ signature
   constructors
     Script : List(Exp) * List(ScriptItem) -> Script
 
+strategies
+  desugar-script = try(collect-refs)
 
 rules
-  collect-refs: Script(items) -> Script(refs, items) with
-    refs := <collect-all(?VarRef(_))> items
-  
+  collect-refs: i@Script(items) -> Script(refs, items) with
+    refs := <collect-all(?VarRef(_)); strip-annos> items
+
+strategies
+  resugar-script = try(remove-refs); debug(!"Resugared script: ")
+
+rules
+  remove-refs: Script(refs, items) -> <debug(!"removings refs: ")> Script(items)

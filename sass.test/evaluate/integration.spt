@@ -19,4 +19,4 @@ test eval [[
   }
   t: $w + $z;
 }
-]] run evaluate-all 
+]] run codegen 

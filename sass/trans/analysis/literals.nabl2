@@ -29,7 +29,8 @@ rules
   [[ Null()  ^ (_, css) : NullT() ]] := css == CSSAble().
   [[ VarRef(id) ^ (s, css) : ty ]] := 
     Var{id} -> s,
-    Var{id} |-> d | warning $[[id] might be undefined] @id,
-    d : ty | warning
+    Var{id} |-> d
+    , d : ty
+    , ty != UnresolvedVarT() | warning $[[id] might be undefined] @id
     , css == CSSAble().
   
